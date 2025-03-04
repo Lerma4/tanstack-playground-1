@@ -104,6 +104,16 @@ function RootDocument({ children }: { children: React.ReactNode }) {
               </Nav.Link>
               <Nav.Link>
                 <Link
+                  to="/imp"
+                  activeProps={{
+                    className: 'font-bold',
+                  }}
+                >
+                  Imp
+                </Link>
+              </Nav.Link>
+              <Nav.Link>
+                <Link
                   to="/posts"
                   activeProps={{
                     className: 'font-bold',

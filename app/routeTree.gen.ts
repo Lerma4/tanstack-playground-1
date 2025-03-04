@@ -19,6 +19,7 @@ import { Route as PostsRouteImport } from './routes/posts.route'
 import { Route as IndexImport } from './routes/index'
 import { Route as UsersIndexImport } from './routes/users.index'
 import { Route as PostsIndexImport } from './routes/posts.index'
+import { Route as ImpIndexImport } from './routes/imp.index'
 import { Route as UsersUserIdImport } from './routes/users.$userId'
 import { Route as PostsPostIdImport } from './routes/posts.$postId'
 import { Route as PathlessLayoutNestedLayoutImport } from './routes/_pathlessLayout/_nested-layout'
@@ -73,6 +74,12 @@ const PostsIndexRoute = PostsIndexImport.update({
   id: '/',
   path: '/',
   getParentRoute: () => PostsRouteRoute,
+} as any)
+
+const ImpIndexRoute = ImpIndexImport.update({
+  id: '/imp/',
+  path: '/imp/',
+  getParentRoute: () => rootRoute,
 } as any)
 
 const UsersUserIdRoute = UsersUserIdImport.update({
@@ -181,6 +188,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof UsersUserIdImport
       parentRoute: typeof UsersRouteImport
     }
+    '/imp/': {
+      id: '/imp/'
+      path: '/imp'
+      fullPath: '/imp'
+      preLoaderRoute: typeof ImpIndexImport
+      parentRoute: typeof rootRoute
+    }
     '/posts/': {
       id: '/posts/'
       path: '/'
@@ -288,6 +302,7 @@ export interface FileRoutesByFullPath {
   '/redirect': typeof RedirectRoute
   '/posts/$postId': typeof PostsPostIdRoute
   '/users/$userId': typeof UsersUserIdRoute
+  '/imp': typeof ImpIndexRoute
   '/posts/': typeof PostsIndexRoute
   '/users/': typeof UsersIndexRoute
   '/route-a': typeof PathlessLayoutNestedLayoutRouteARoute
@@ -302,6 +317,7 @@ export interface FileRoutesByTo {
   '/redirect': typeof RedirectRoute
   '/posts/$postId': typeof PostsPostIdRoute
   '/users/$userId': typeof UsersUserIdRoute
+  '/imp': typeof ImpIndexRoute
   '/posts': typeof PostsIndexRoute
   '/users': typeof UsersIndexRoute
   '/route-a': typeof PathlessLayoutNestedLayoutRouteARoute
@@ -320,6 +336,7 @@ export interface FileRoutesById {
   '/_pathlessLayout/_nested-layout': typeof PathlessLayoutNestedLayoutRouteWithChildren
   '/posts/$postId': typeof PostsPostIdRoute
   '/users/$userId': typeof UsersUserIdRoute
+  '/imp/': typeof ImpIndexRoute
   '/posts/': typeof PostsIndexRoute
   '/users/': typeof UsersIndexRoute
   '/_pathlessLayout/_nested-layout/route-a': typeof PathlessLayoutNestedLayoutRouteARoute
@@ -338,6 +355,7 @@ export interface FileRouteTypes {
     | '/redirect'
     | '/posts/$postId'
     | '/users/$userId'
+    | '/imp'
     | '/posts/'
     | '/users/'
     | '/route-a'
@@ -351,6 +369,7 @@ export interface FileRouteTypes {
     | '/redirect'
     | '/posts/$postId'
     | '/users/$userId'
+    | '/imp'
     | '/posts'
     | '/users'
     | '/route-a'
@@ -367,6 +386,7 @@ export interface FileRouteTypes {
     | '/_pathlessLayout/_nested-layout'
     | '/posts/$postId'
     | '/users/$userId'
+    | '/imp/'
     | '/posts/'
     | '/users/'
     | '/_pathlessLayout/_nested-layout/route-a'
@@ -382,6 +402,7 @@ export interface RootRouteChildren {
   PathlessLayoutRoute: typeof PathlessLayoutRouteWithChildren
   DeferredRoute: typeof DeferredRoute
   RedirectRoute: typeof RedirectRoute
+  ImpIndexRoute: typeof ImpIndexRoute
   PostsPostIdDeepRoute: typeof PostsPostIdDeepRoute
 }
 
@@ -392,6 +413,7 @@ const rootRouteChildren: RootRouteChildren = {
   PathlessLayoutRoute: PathlessLayoutRouteWithChildren,
   DeferredRoute: DeferredRoute,
   RedirectRoute: RedirectRoute,
+  ImpIndexRoute: ImpIndexRoute,
   PostsPostIdDeepRoute: PostsPostIdDeepRoute,
 }
 
@@ -411,6 +433,7 @@ export const routeTree = rootRoute
         "/_pathlessLayout",
         "/deferred",
         "/redirect",
+        "/imp/",
         "/posts_/$postId/deep"
       ]
     },
@@ -458,6 +481,9 @@ export const routeTree = rootRoute
     "/users/$userId": {
       "filePath": "users.$userId.tsx",
       "parent": "/users"
+    },
+    "/imp/": {
+      "filePath": "imp.index.tsx"
     },
     "/posts/": {
       "filePath": "posts.index.tsx",
