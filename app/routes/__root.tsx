@@ -89,90 +89,63 @@ function RootDocument({ children }: { children: React.ReactNode }) {
       <body>
         <Navbar bg="dark" data-bs-theme="dark">
           <Container>
-            <Navbar.Brand href="#home">Navbar</Navbar.Brand>
+            <Navbar.Brand>Dogana Test</Navbar.Brand>
             <Nav className="me-auto">
-              <Nav.Link>
-                <Link
-                  to="/"
-                  activeProps={{
-                    className: 'font-bold',
-                  }}
-                  activeOptions={{ exact: true }}
-                >
-                  Home
-                </Link>
-              </Nav.Link>
-              <Nav.Link>
-                <Link
-                  to="/imp"
-                  activeProps={{
-                    className: 'font-bold',
-                  }}
-                >
-                  Imp
-                </Link>
-              </Nav.Link>
-              <Nav.Link>
-                <Link
-                  to="/posts"
-                  activeProps={{
-                    className: 'font-bold',
-                  }}
-                >
-                  Posts
-                </Link>
-              </Nav.Link>
-              <Nav.Link>
-                <Link
-                  to="/users"
-                  activeProps={{
-                    className: 'font-bold',
-                  }}
-                >
-                  Users
-                </Link>
-              </Nav.Link>
-              <Nav.Link>
-                <Link
-                  to="/user-table"
-                  activeProps={{
-                    className: 'font-bold',
-                  }}
-                >
-                  Users Table
-                </Link>
-              </Nav.Link>
-              <Nav.Link>
-                <Link
-                  to="/route-a"
-                  activeProps={{
-                    className: 'font-bold',
-                  }}
-                >
-                  Pathless Layout
-                </Link>
-              </Nav.Link>
-              <Nav.Link>
-                <Link
-                  to="/deferred"
-                  activeProps={{
-                    className: 'font-bold',
-                  }}
-                >
-                  Deferred
-                </Link>
-              </Nav.Link>
-              <Nav.Link>
-                <Link
-                  // @ts-expect-error
-                  to="/this-route-does-not-exist"
-                  activeProps={{
-                    className: 'font-bold',
-                  }}
-                >
-                  This Route Does Not Exist
-                </Link>
-              </Nav.Link>
+              <Link
+                to="/"
+                className="nav-link"
+                activeProps={{
+                  className: 'nav-link active'
+                }}
+                activeOptions={{ exact: true }}
+              >
+                Home
+              </Link>
+              <Link
+                to="/imp"
+                className="nav-link"
+                activeProps={{
+                  className: 'nav-link active'
+                }}
+              >
+                Importazioni
+              </Link>
+              <Link
+                to="/breed"
+                className="nav-link"
+                activeProps={{
+                  className: 'nav-link active'
+                }}
+              >
+                Dog Breeds
+              </Link>
+              <Link
+                to="/users"
+                className="nav-link"
+                activeProps={{
+                  className: 'nav-link active'
+                }}
+              >
+                Users
+              </Link>
+              <Link
+                to="/user-table"
+                className="nav-link"
+                activeProps={{
+                  className: 'nav-link active'
+                }}
+              >
+                Users Table
+              </Link>
+              <Link
+                to="/posts"
+                className="nav-link"
+                activeProps={{
+                  className: 'nav-link active'
+                }}
+              >
+                Posts
+              </Link>
             </Nav>
           </Container>
         </Navbar>

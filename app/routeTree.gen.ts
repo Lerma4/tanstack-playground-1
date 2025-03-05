@@ -21,6 +21,7 @@ import { Route as IndexImport } from './routes/index'
 import { Route as UsersIndexImport } from './routes/users.index'
 import { Route as PostsIndexImport } from './routes/posts.index'
 import { Route as ImpIndexImport } from './routes/imp.index'
+import { Route as BreedIndexImport } from './routes/breed.index'
 import { Route as UsersUserIdImport } from './routes/users.$userId'
 import { Route as PostsPostIdImport } from './routes/posts.$postId'
 import { Route as PathlessLayoutNestedLayoutImport } from './routes/_pathlessLayout/_nested-layout'
@@ -86,6 +87,12 @@ const PostsIndexRoute = PostsIndexImport.update({
 const ImpIndexRoute = ImpIndexImport.update({
   id: '/imp/',
   path: '/imp/',
+  getParentRoute: () => rootRoute,
+} as any)
+
+const BreedIndexRoute = BreedIndexImport.update({
+  id: '/breed/',
+  path: '/breed/',
   getParentRoute: () => rootRoute,
 } as any)
 
@@ -202,6 +209,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof UsersUserIdImport
       parentRoute: typeof UsersRouteImport
     }
+    '/breed/': {
+      id: '/breed/'
+      path: '/breed'
+      fullPath: '/breed'
+      preLoaderRoute: typeof BreedIndexImport
+      parentRoute: typeof rootRoute
+    }
     '/imp/': {
       id: '/imp/'
       path: '/imp'
@@ -317,6 +331,7 @@ export interface FileRoutesByFullPath {
   '/user-table': typeof UserTableRoute
   '/posts/$postId': typeof PostsPostIdRoute
   '/users/$userId': typeof UsersUserIdRoute
+  '/breed': typeof BreedIndexRoute
   '/imp': typeof ImpIndexRoute
   '/posts/': typeof PostsIndexRoute
   '/users/': typeof UsersIndexRoute
@@ -333,6 +348,7 @@ export interface FileRoutesByTo {
   '/user-table': typeof UserTableRoute
   '/posts/$postId': typeof PostsPostIdRoute
   '/users/$userId': typeof UsersUserIdRoute
+  '/breed': typeof BreedIndexRoute
   '/imp': typeof ImpIndexRoute
   '/posts': typeof PostsIndexRoute
   '/users': typeof UsersIndexRoute
@@ -353,6 +369,7 @@ export interface FileRoutesById {
   '/_pathlessLayout/_nested-layout': typeof PathlessLayoutNestedLayoutRouteWithChildren
   '/posts/$postId': typeof PostsPostIdRoute
   '/users/$userId': typeof UsersUserIdRoute
+  '/breed/': typeof BreedIndexRoute
   '/imp/': typeof ImpIndexRoute
   '/posts/': typeof PostsIndexRoute
   '/users/': typeof UsersIndexRoute
@@ -373,6 +390,7 @@ export interface FileRouteTypes {
     | '/user-table'
     | '/posts/$postId'
     | '/users/$userId'
+    | '/breed'
     | '/imp'
     | '/posts/'
     | '/users/'
@@ -388,6 +406,7 @@ export interface FileRouteTypes {
     | '/user-table'
     | '/posts/$postId'
     | '/users/$userId'
+    | '/breed'
     | '/imp'
     | '/posts'
     | '/users'
@@ -406,6 +425,7 @@ export interface FileRouteTypes {
     | '/_pathlessLayout/_nested-layout'
     | '/posts/$postId'
     | '/users/$userId'
+    | '/breed/'
     | '/imp/'
     | '/posts/'
     | '/users/'
@@ -423,6 +443,7 @@ export interface RootRouteChildren {
   DeferredRoute: typeof DeferredRoute
   RedirectRoute: typeof RedirectRoute
   UserTableRoute: typeof UserTableRoute
+  BreedIndexRoute: typeof BreedIndexRoute
   ImpIndexRoute: typeof ImpIndexRoute
   PostsPostIdDeepRoute: typeof PostsPostIdDeepRoute
 }
@@ -435,6 +456,7 @@ const rootRouteChildren: RootRouteChildren = {
   DeferredRoute: DeferredRoute,
   RedirectRoute: RedirectRoute,
   UserTableRoute: UserTableRoute,
+  BreedIndexRoute: BreedIndexRoute,
   ImpIndexRoute: ImpIndexRoute,
   PostsPostIdDeepRoute: PostsPostIdDeepRoute,
 }
@@ -456,6 +478,7 @@ export const routeTree = rootRoute
         "/deferred",
         "/redirect",
         "/user-table",
+        "/breed/",
         "/imp/",
         "/posts_/$postId/deep"
       ]
@@ -507,6 +530,9 @@ export const routeTree = rootRoute
     "/users/$userId": {
       "filePath": "users.$userId.tsx",
       "parent": "/users"
+    },
+    "/breed/": {
+      "filePath": "breed.index.tsx"
     },
     "/imp/": {
       "filePath": "imp.index.tsx"
